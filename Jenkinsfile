@@ -1,7 +1,11 @@
 pipeline{
-    agent any 
+    agent  {
+        label 'azure'
+    }
     tools {
-        "org.jenkinsci.plugins.terraform.TerraformInstallation" "terraform"
+        terraform "terraform"
+        git "Default"
+        dockerTool "docker"
     }
     environment {
         TF_HOME = tool('terraform')
